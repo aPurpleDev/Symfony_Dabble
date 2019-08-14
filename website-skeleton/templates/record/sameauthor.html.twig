@@ -1,24 +1,30 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Explore Music Records!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1> {{ record.titre }} </h1>
+    <h2>Du même artiste</h2>
+{% for S in selection %}
 
-    <h2>A music hit brought to you by {{ record.auteur }}</h2>
+    {% if S != record %}
 
-    <p>Released {{ record.parution|date('Y-m-d') }}</p>
+    <li>
+        <a href="{{'http://localhost:8888/Symfony_J2/website-skeleton/public/index.php/record/' ~ S['id'] }}" >{{ S['titre'] | upper }}</a>
+    </li>
 
-    <footer>About : {{ record.presentation }}</footer>
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/Symfony_J2/website-skeleton/src/Controller/RecordController.php'|file_link(0) }}">src/Controller/RecordController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/Symfony_J2/website-skeleton/templates/record/index.html.twig'|file_link(0) }}">templates/record/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {% endif %}
+
+    {% endfor %}
+{#    {% for S in selection %}
+
+        <div class="author sidenav" style="width:25%">
+            <a href="#" class="w3-bar-item w3-button">{{ S.titre }}</a>
+            <a href="#" class="w3-bar-item w3-button">{{ S.parution|date('Y-m-d') }}</a>
+            <a href="#" class="w3-bar-item w3-button">{{ S.presentation }}</a>
+        </div>
+
+        <div style="margin-left:25%">
+            ... page content ...
+        </div>
+
+    {% endfor %}#}
+
 {% endblock %}
+
