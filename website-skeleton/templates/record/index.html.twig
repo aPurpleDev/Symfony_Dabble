@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Explore Music Records!{% endblock %}
+
+{% block body %}
+
+    <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1> {{ record.titre }} </h1>
+
+    <h2>A music hit brought to you by {{ record.auteur }}</h2>
+
+    <p>Released {{ record.parution|date('Y-m-d') }}</p>
+
+    <footer>About : {{ record.presentation }}</footer>
+
+    {% include '/record/sameauthor.html.twig' %}
+
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/Symfony_J2/website-skeleton/src/Controller/RecordController.php'|file_link(0) }}">src/Controller/RecordController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/Symfony_J2/website-skeleton/templates/record/index.html.twig'|file_link(0) }}">templates/record/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
